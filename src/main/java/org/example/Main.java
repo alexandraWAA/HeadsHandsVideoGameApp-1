@@ -48,7 +48,7 @@ public class Main {
         int maxSizeArray = 30, maxElement = 20, n = 7;
         Random random = new Random();
         List<int []> listArray = new ArrayList<>();
-        ist<Integer> randomElement = new ArrayList<>();
+        int<Integer> randomElement = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             int[] tempArray;
             int m = 1 + random.nextInt(maxSizeArray);
