@@ -1,4 +1,5 @@
-package android_educational_center;
+package org.example;
+
 /*
     Задача
 На входе функция получает параметр n - натуральное число. Необходимо сгенерировать n-массивов, заполнить их случайными числами,
@@ -44,3 +45,32 @@ public class Main {
         //Scanner scanner = new Scanner(System.in);
         //System.out.print("Введите количество массивов: "); //ручной ввод с клавиатуры
         //int n = scanner.nextInt();
+        int maxSizeArray = 30, maxElement = 20, n = 7;
+        Random random = new Random();
+        List<int []> listArray = new ArrayList<>();
+        int<Integer> randomElement = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            int[] tempArray;
+            int m = 1 + random.nextInt(maxSizeArray);
+            if (maxSizeArray >= n) {
+                while (randomElement.contains(m))
+                    m = 1 + random.nextInt(maxSizeArray);
+                randomElement.add(m);
+            }
+            tempArray = new int[m];
+            for (int j = 0; j < m; j++)
+                tempArray[j] = random.nextInt(maxElement);
+            listArray.add(tempArray);
+        }
+        System.out.println("Массив до сортировки:");
+        show(listArray);
+        AtomicInteger counter = new AtomicInteger();
+        listArray.forEach(item -> {
+            // Массивы с четным порядковым номером отсортировать по возрастанию, с нечетным порядковым номером - по убыванию.
+            quickSort(counter.getAndIncrement() % 2 == 0 ,item, 0, item.length - 1);
+            System.out.println();
+        });
+        System.out.println("\nМассив после быстрой сортировки:");
+        show(listArray);
+    }
+}
